@@ -13,8 +13,8 @@ option(BUILD_TESTS "Build test" OFF)
 option(BUILD_DEMO "Build demo programs" OFF)
 option(BUILD_EXAMPLE "Build example programs" OFF)
 option(BUILD_TOOLS "Build tools" OFF)
-option(BUILD_WITH_TBB "Build with TBB support" ON)
-option(BUILD_WITH_OPENMP "Build with OpenMP support" ON)
+option(BUILD_WITH_TBB "Build with TBB support" OFF)
+option(BUILD_WITH_OPENMP "Build with OpenMP support" OFF)
 option(BUILD_WITH_CUDA "Build with GPU support" OFF)
 option(BUILD_WITH_CUDA_MULTIARCH "Build with CUDA multi-architecture support" OFF)
 option(BUILD_WITH_MARCH_NATIVE "Build with -march=native" OFF)
@@ -191,7 +191,7 @@ target_link_libraries(gtsam_points
   Boost::boost
   Boost::filesystem
   Eigen3::Eigen
-  GTSAM::GTSAM
+  gtsam
   $<TARGET_NAME_IF_EXISTS:TBB::tbb>
   $<TARGET_NAME_IF_EXISTS:OpenMP::OpenMP_CXX>
 )
@@ -237,7 +237,8 @@ if(BUILD_WITH_CUDA)
     CUDA::cudart
     Boost::boost
     Eigen3::Eigen
-    GTSAM::GTSAM
+    # GTSAM::GTSAM
+    gtsam
     $<TARGET_NAME_IF_EXISTS:TBB::tbb>
     $<TARGET_NAME_IF_EXISTS:OpenMP::OpenMP_CXX>
   )
@@ -356,7 +357,7 @@ write_basic_package_version_file(
 install(FILES
   "${CMAKE_CURRENT_BINARY_DIR}/gtsam_points-config.cmake"
   "${CMAKE_CURRENT_BINARY_DIR}/gtsam_points-config-version.cmake"
-  "${CMAKE_CURRENT_SOURCE_DIR}/cmake/FindGTSAM.cmake"
+  # "${CMAKE_CURRENT_SOURCE_DIR}/cmake/FindGTSAM.cmake"
   DESTINATION ${CMAKE_CONFIG_INSTALL_DIR}
 )
 
