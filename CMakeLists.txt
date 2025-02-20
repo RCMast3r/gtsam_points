@@ -189,10 +189,10 @@ target_include_directories(gtsam_points PUBLIC
 )
 
 target_link_libraries(gtsam_points PUBLIC
+  gtsam
   Boost::boost
   Boost::filesystem
   Eigen3::Eigen
-  gtsam
   $<TARGET_NAME_IF_EXISTS:TBB::tbb>
   $<TARGET_NAME_IF_EXISTS:OpenMP::OpenMP_CXX>
 )
