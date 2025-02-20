@@ -187,7 +187,8 @@ target_include_directories(gtsam_points PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/include>
   $<INSTALL_INTERFACE:include>
 )
-target_link_libraries(gtsam_points
+
+target_link_libraries(gtsam_points PUBLIC
   Boost::boost
   Boost::filesystem
   Eigen3::Eigen
